@@ -36,6 +36,7 @@
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
   <script type="text/babel">
+
     const jsonLocalStorage = {
       setItem: (key, value) => {
         localStorage.setItem(key, JSON.stringify(value));
@@ -43,6 +44,13 @@
       getItem: (key) => {
         return JSON.parse(localStorage.getItem(key));
       },
+    };
+
+    const fetchCat = async (text) => {
+      const OPEN_API_DOMAIN = "https://cataas.com";
+      const response = await fetch(`${OPEN_API_DOMAIN}/cat/says/${text}?json=true`);
+      const responseJson = await response.json();
+      return `${OPEN_API_DOMAIN}/${responseJson.url}`;
     };
 
     const Title = (props) => {
@@ -76,7 +84,7 @@
           setErrorMessage('빈 값으로 생성할 수 없습니다.');
           return;
         }
-        updateMainCat();
+        updateMainCat(value);
       }
 
       return (
@@ -141,8 +149,10 @@
       );
 
 
-      function updateMainCat(event) {    // '생성'을 눌렀을 때
-        setMaincat(CAT2);
+      async function updateMainCat(value) {    // '생성'을 눌렀을 때
+        const newCat = await fetchCat(value);
+
+        setMaincat(newCat);
         const nextCounter = counter + 1;
         setCounter(nextCounter);
         jsonLocalStorage.setItem('counter', nextCounter);
