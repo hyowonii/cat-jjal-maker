@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import React from 'react';
 import './App.css';
 import Title from './components/Title';
@@ -26,8 +25,6 @@ const fetchCat = async (text) => {
 
 const App = () => {
   const CAT1 = "https://cataas.com/cat/60b73094e04e18001194a309/says/react";
-  const CAT2 = "https://cataas.com//cat/5e9970351b7a400011744233/says/inflearn";
-  const CAT3 = "https://cataas.com/cat/595f280b557291a9750ebf65/says/JavaScript";
 
 
   const [counter, setCounter] = React.useState(() => {
