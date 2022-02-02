@@ -35,8 +35,6 @@ const App = () => {
     return jsonLocalStorage.getItem("favorites") || [];   // null이면 빈 배열로
   });
 
-  const alreadyFavorite = favorites.includes(mainCat);
-
   async function setInitialCat() {
     const newCat = await fetchCat('Frist Cat');
     setMaincat(newCat);
@@ -57,13 +55,15 @@ const App = () => {
       jsonLocalStorage.setItem('counter', nextCounter);
       return nextCounter;
     })
-  }
+  };
+
+  const alreadyFavorite = favorites.includes(mainCat);
 
   function handleHeartClick() {
     const nextFavorites = [...favorites, mainCat];
     setFavorites(nextFavorites);
     jsonLocalStorage.setItem('favorites', nextFavorites)
-  }
+  };
 
   const counterTitle = counter === null ? "" : counter + "번째 ";
 

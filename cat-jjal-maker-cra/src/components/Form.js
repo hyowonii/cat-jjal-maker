@@ -22,6 +22,8 @@ const Form = ({ updateMainCat }) => {
         if (value === "") {
             setErrorMessage('빈 값으로 생성할 수 없습니다.');
             return;
+        } else if (includesHangul) {
+            return;
         }
         updateMainCat(value);
     };
