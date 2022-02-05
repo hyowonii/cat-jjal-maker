@@ -68,7 +68,6 @@ const App = () => {
   const counterTitle = counter === null ? "" : counter + "번째 ";
 
   return (
-    // 최상위 태그를 하나로
     <div>
       <Title>{counterTitle}고양이 가라사대</Title>
       <Form updateMainCat={updateMainCat} />
