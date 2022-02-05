@@ -60,6 +60,12 @@ const App = () => {
   const alreadyFavorite = favorites.includes(mainCat);
 
   function handleHeartClick() {
+    if (alreadyFavorite) {
+      const nextFavorites = favorites.filter(favorite => favorite != mainCat);
+      setFavorites(nextFavorites);
+      jsonLocalStorage.removeItem(mainCat);
+      return;
+    }
     const nextFavorites = [...favorites, mainCat];
     setFavorites(nextFavorites);
     jsonLocalStorage.setItem('favorites', nextFavorites)
