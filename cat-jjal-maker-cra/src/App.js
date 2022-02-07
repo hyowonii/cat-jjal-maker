@@ -36,7 +36,7 @@ const App = () => {
   });
 
   async function setInitialCat() {
-    const newCat = await fetchCat('Frist Cat');
+    const newCat = await fetchCat('First Cat');
     setMaincat(newCat);
   }
 
@@ -61,14 +61,14 @@ const App = () => {
 
   function handleHeartClick() {
     if (alreadyFavorite) {
-      const nextFavorites = favorites.filter(favorite => favorite != mainCat);
+      const nextFavorites = favorites.filter(favorite => favorite !== mainCat);
       setFavorites(nextFavorites);
-      jsonLocalStorage.removeItem(mainCat);
+      jsonLocalStorage.setItem('favorites', nextFavorites);
       return;
     }
     const nextFavorites = [...favorites, mainCat];
     setFavorites(nextFavorites);
-    jsonLocalStorage.setItem('favorites', nextFavorites)
+    jsonLocalStorage.setItem('favorites', nextFavorites);
   };
 
   const counterTitle = counter === null ? "" : counter + "번째 ";
