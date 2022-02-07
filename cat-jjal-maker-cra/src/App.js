@@ -36,7 +36,7 @@ const App = () => {
   });
 
   async function setInitialCat() {
-    const newCat = await fetchCat('Frist Cat');
+    const newCat = await fetchCat('First Cat');
     setMaincat(newCat);
   }
 
@@ -60,15 +60,20 @@ const App = () => {
   const alreadyFavorite = favorites.includes(mainCat);
 
   function handleHeartClick() {
+    if (alreadyFavorite) {
+      const nextFavorites = favorites.filter(favorite => favorite !== mainCat);
+      setFavorites(nextFavorites);
+      jsonLocalStorage.setItem('favorites', nextFavorites);
+      return;
+    }
     const nextFavorites = [...favorites, mainCat];
     setFavorites(nextFavorites);
-    jsonLocalStorage.setItem('favorites', nextFavorites)
+    jsonLocalStorage.setItem('favorites', nextFavorites);
   };
 
   const counterTitle = counter === null ? "" : counter + "번째 ";
 
   return (
-    // 최상위 태그를 하나로
     <div>
       <Title>{counterTitle}고양이 가라사대</Title>
       <Form updateMainCat={updateMainCat} />
