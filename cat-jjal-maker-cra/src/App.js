@@ -71,6 +71,19 @@ const App = () => {
     jsonLocalStorage.setItem('favorites', nextFavorites);
   };
 
+  function deleteFavorite(catImg) {
+    const result = window.confirm("정말 삭제하시겠습니까?");
+    if (result) {
+      console.log(catImg);
+      console.log(favorites[0])
+      const nextFavorites = favorites.filter(favorite => favorite !== catImg);
+      setFavorites(nextFavorites);
+      jsonLocalStorage.setItem('favorites', nextFavorites);
+    } else {
+      return;
+    }
+  }
+
   const counterTitle = counter === null ? "" : counter + "번째 ";
 
   return (
@@ -78,7 +91,7 @@ const App = () => {
       <Title>{counterTitle}고양이 가라사대</Title>
       <Form updateMainCat={updateMainCat} />
       <MainCard img={mainCat} onHeartClick={handleHeartClick} alreadyFavorite={alreadyFavorite} />
-      <Favorites favorites={favorites} />
+      <Favorites favorites={favorites} deleteFavorite={deleteFavorite} />
     </div>
   );
 }

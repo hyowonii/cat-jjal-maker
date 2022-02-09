@@ -1,6 +1,9 @@
 const Title = (props) => {
     return (
-        <h1>{props.children}</h1>
+        <div className="title">
+            <h1>{props.children}</h1>
+        </div>
+
     );
 };
 
