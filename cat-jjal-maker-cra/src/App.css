@@ -28,3 +28,11 @@ body {
   flex-wrap: wrap;
   gap: 15px;
 }
+
+.btn {
+  display: none;
+}
+
+.favorites img:hover + .btn {
+  display: inline-block;
+}
