@@ -29,10 +29,20 @@ body {
   gap: 15px;
 }
 
-.btn {
-  display: none;
+.favcat {
+  position: relative;
+}
+.favcat:hover {
+  transform:scale(2.0);
+  transition: transform .35s;
 }
 
-.favorites img:hover + .btn {
-  display: inline-block;
+.favcat img {
+  border-style: dashed;
+  border-color: cadetblue;
+}
+
+.btn {
+  position: absolute;
+  right: 0px;
 }

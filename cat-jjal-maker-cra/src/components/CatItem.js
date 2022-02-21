@@ -1,8 +1,8 @@
 function CatItem({ img, deleteFavorite }) {
   return (
-    <li className>
+    <li className="favcat">
       <img src={img} style={{ width: "150px" }} />
-      <button className="btn" onClick={() => deleteFavorite(img)}>삭제</button>
+      <button className="btn" onClick={() => deleteFavorite(img)}>X</button>
     </li >
   );
 };
