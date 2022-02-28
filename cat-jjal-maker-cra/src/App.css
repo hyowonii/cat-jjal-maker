@@ -45,6 +45,7 @@ body {
 .favcat:hover {
   transform:scale(2.0);
   transition: transform .35s;
+  z-index: 2;
 }
 
 .favcat img {
